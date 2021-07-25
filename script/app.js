@@ -23,9 +23,9 @@ if (clave == "coderhouse")
     {
         alert("Bienvenido " + nombre + " " + apellido + " puede ingresar por la puerta 5");
     } else {
-        alert("Usted es un impostor");
+        alert("Usted es un impostor, adios");
     }
 } else {
-    alert("La contraseña es incorrecta");
+    alert("La contraseña es incorrecta, adios");
 }
 
