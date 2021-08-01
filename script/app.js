@@ -186,12 +186,12 @@ var contrasenia = "";
 var userLogged = false;
 var opcionSeleccionada = 0;
 let tries = 3;
-let ETH = 0.15;
-let BTC = 0.004;
-let SHIB = 100000000;
-let SUN = 1000;
-let ADA = 2000;
-let DOT = 3000;
+var ETH = 20;
+var BTC = 40;
+var SHIB = 1000;
+var SUN = 1000;
+var ADA = 2000;
+var DOT = 3000;
 
 // FUNCIONES DE LA APLICACIÓN
 
@@ -224,11 +224,72 @@ function mostrarTabla(){
 
 }
 
-function editarValor(nombre, valor){
+function editarValor(){
+
+    // Ingrese el nombre de la moneda
+    var nombreMoneda;
+    do{
+        nombreMoneda = prompt("Ingrese el nombre de la moneda");    
+    } while((nombreMoneda != "ETH" && nombreMoneda != "BTC" && nombreMoneda != "SHIB" && nombreMoneda != "SUN"  && nombreMoneda != "ADA" && nombreMoneda != "DOT"))
+    
+    // Ingrese el nuevo valor
+    let nuevoValor = Number(prompt("Por favor, ingrese el nuevo valor"));
+    
+    // Asigna el nuevo valor
+    switch(nombreMoneda)
+    {
+        case "ETH":
+            ETH = nuevoValor;
+            break;
+        case "BTC":
+            BTC = nuevoValor;
+            break;
+        case "SHIB":
+            SHIB = nuevoValor;
+            break;
+        case "SUN":
+            SUN = nuevoValor;
+            break;
+        case "ADA":
+            ADA = nuevoValor;
+            break;
+        case "DOT":
+            DOT = nuevoValor;
+            break;
+    }
 
 }
 
-function borrarValor(nombre){
+function borrarValor(){
+
+    // Ingrese el nombre de la moneda a borrar
+    var nombreMoneda;
+    do{
+        nombreMoneda = prompt("Ingrese el nombre de la moneda");    
+    } while((nombreMoneda != "ETH" && nombreMoneda != "BTC" && nombreMoneda != "SHIB" && nombreMoneda != "SUN"  && nombreMoneda != "ADA" && nombreMoneda != "DOT"))
+    
+    // Borra el valor
+    switch(nombreMoneda)
+    {
+        case "ETH":
+            ETH = 0;
+            break;
+        case "BTC":
+            BTC = 0;
+            break;
+        case "SHIB":
+            SHIB = 0;
+            break;
+        case "SUN":
+            SUN = 0;
+            break;
+        case "ADA":
+            ADA = 0;
+            break;
+        case "DOT":
+            DOT = 0;
+            break;
+    }
 
 }
 
