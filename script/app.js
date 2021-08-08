@@ -25,13 +25,26 @@ var cantToken = [cantETH, cantBTC, cantSHIB, cantSUN, cantADA, cantDOT];
 // Acumulador
 var montoTotal = 0.0;
 
+// Definición de clases
+class Persona {
+    // Constructor
+    constructor(nombre, apellido, telefono){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+    }
+}
+
 // Título de la Página
 
 var tituloPagina = `<h1>Tu Billetera de Criptomonedas</h1>`;
 
 // Nombre de usuario
 
-var nombreUsuario = `<h2>Usuario: gregorio2020</h2>`;
+const usuario = new Persona("Jorge Migue", "Lopez", "1234-5678")
+var nombreUsuario = `<h2>Nombre: ${usuario.nombre} Apellido: ${usuario.apellido} Teléfono: ${usuario.telefono}</h2>`;
+
+`<h2>Usuario: gregorio2020</h2>`;
 
 // Nombre de las Columnas 
 
