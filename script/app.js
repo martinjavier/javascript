@@ -44,8 +44,6 @@ var tituloPagina = `<h1>Tu Billetera de Criptomonedas</h1>`;
 const usuario = new Persona("Jorge Migue", "Lopez", "1234-5678")
 var nombreUsuario = `<h2>Nombre: ${usuario.nombre} Apellido: ${usuario.apellido} Teléfono: ${usuario.telefono}</h2>`;
 
-`<h2>Usuario: gregorio2020</h2>`;
-
 // Nombre de las Columnas 
 
 var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Valor</th><th>Descripción</th><th>Cantidad</th><th>Monto</th></tr>`;
