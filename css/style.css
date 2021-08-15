@@ -6,6 +6,10 @@ text{
   color: white;
 }
 
+a{
+    font-weight: 700;
+}
+
 h1{
     color: white;
 }
@@ -16,4 +20,11 @@ h2{
 
 p{
     color: white;
+    margin-left: 10px;
+}
+
+.table{
+    margin: 20px;
+    width: 90%;
+
 }
