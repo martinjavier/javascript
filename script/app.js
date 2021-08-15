@@ -1,83 +1,109 @@
-// Definición de variables
 
-// Valores en U$D
-var ETH = 2987.01;
-var BTC = 43787.01;
-var SHIB = 0.000007442;
-var SUN = 0.02397;
-var ADA = 1.43;
-var DOT = 19.56;
+function inicial()
+{
+    // Limpio el localStorage
+    localStorage.clear();
 
-// Tenencias
-var cantETH = 2.5;
-var cantBTC = 1.5;
-var cantSHIB = 30000.0;
-var cantSUN = 5000.0;
-var cantADA = 50.0;
-var cantDOT = 30.0;
+    // Creamos una clase
+    class Moneda{
 
-// Arreglos
-var nombreToken = ["ETH", "BTC", "SHIB", "SUN", "ADA", "DOT"];
-var valorToken = [ETH, BTC, SHIB, SUN, ADA, DOT];
-var descToken = ["Ethereum", "Bitcoin", "Shiba Inu", "Sun", "Cardano", "Polkadot"]
-var cantToken = [cantETH, cantBTC, cantSHIB, cantSUN, cantADA, cantDOT];
+        constructor (nombre, precio, desc){
+            this.nombre = nombre
+            this.precio = precio
+            this.desc = desc
+        }
+    }
 
-// Acumulador
-var montoTotal = 0.0;
+    // Valores en U$D
 
-// Definición de clases
-class Persona {
-    // Constructor
-    constructor(nombre, apellido, telefono){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
+    var BTC = 46907.68;
+    var ETH = 3243.88;
+    var ADA = 2.18;
+    var BNB = 406.36;
+    var USDT = 1.00;
+    var XRP = 1.29;
+    var DOGE = 0.29;
+    var DOT = 22.71;
+    var SHIB = 0.000008073;
+    var SUN = 0.02988;
+
+    // Armo un arreglo
+
+    const monedas = [];
+
+    // Defino la información de cada moneda
+
+    const moneda01 = new Moneda("BTC", BTC, "Bitcoin");
+    const moneda02 = new Moneda("ETH", ETH, "Ethereum");
+    const moneda03 = new Moneda("ADA", ADA, "Cardano");
+    const moneda04 = new Moneda("BNB", BNB, "Binance Coin");
+    const moneda05 = new Moneda("USDT", USDT, "USDT");
+    const moneda06 = new Moneda("XRP", XRP, "XRP");
+    const moneda07 = new Moneda("DOGE", DOGE, "Doge Coin");
+    const moneda08 = new Moneda("DOT", DOT, "Polkadot");
+    const moneda09 = new Moneda("SHIB", SHIB, "Shiba Inu");
+    const moneda10 = new Moneda("SUN", SUN, "Sun");
+
+    // Agrego la información al arreglo
+
+    monedas.push(moneda01);
+    monedas.push(moneda02);
+    monedas.push(moneda03);
+    monedas.push(moneda04);
+    monedas.push(moneda05);
+    monedas.push(moneda06);
+    monedas.push(moneda07);
+    monedas.push(moneda08);
+    monedas.push(moneda09);
+    monedas.push(moneda10);
+
+    console.log(monedas);
+
+    // Convierto la información a texto plano para poder almacenarla en el localStorage
+
+    let datoParseado = JSON.stringify(monedas);
+
+    console.log(datoParseado);
+
+    // Cargamos los valores en el localStorage
+
+    for(let i=0; i < monedas.length; i++)
+    {
+        localStorage.setItem("monedas", datoParseado);
     }
 }
 
-// Título de la Página
-
-var tituloPagina = `<h1>Tu Billetera de Criptomonedas</h1>`;
-
-// Nombre de usuario
-
-const usuario = new Persona("Jorge Migue", "Lopez", "1234-5678")
-var nombreUsuario = `<h2>Nombre: ${usuario.nombre} Apellido: ${usuario.apellido} Teléfono: ${usuario.telefono}</h2>`;
-
-// Nombre de las Columnas 
-
-var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Valor</th><th>Descripción</th><th>Cantidad</th><th>Monto</th></tr>`;
-
-// Filas con la información
-
-var filasInformacion = "";
-
-// Definición de Funciones
-
-function calcularValor(valorA, valorB)
+function muestroTabla()
 {
-    var resultado = (valorA*valorB).toFixed(2)
-    montoTotal = montoTotal + Number(resultado);
-    return resultado;
+    // Nombre de las Columnas 
+
+    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Descripción</th></tr>`;
+
+    // Recupero información del localStorage
+
+    let datoDelStorage = localStorage.getItem("monedas");
+    let monedas = JSON.parse(datoDelStorage);
+
+    // Filas con la información
+
+    var filasInformacion = "";
+
+    for(let i=0; i<monedas.length;i++)
+    {
+        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${monedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${monedas[i].desc}</td></tr>`;
+    }
+
+    // Obtengo el identificador del elemento tabla en el DOM
+
+    let elementoTabla = document.getElementById("tabla");
+
+    // Agrego a ese elemento las filas que he armado con la información
+
+    elementoTabla.innerHTML = nombreColumnas + filasInformacion;
 }
 
-function formateaValor(valorA)
-{
-    var resultado = Number(valorA).toLocaleString('en');
-    return resultado;
-}
 
-// Arma la Información para la tabla
+// Procesos
+inicial();
+muestroTabla();
 
-for (var index = 0; index < nombreToken.length; index++)
-{    
-    filasInformacion = filasInformacion + `<tr><td>${index}</td><td>${nombreToken[index]}</td><td>${valorToken[index]}</td><td>${descToken[index]}</td><td>${cantToken[index]}</td><td>${calcularValor(cantToken[index], valorToken[index])}</td></tr>`;
-}
-
-filasInformacion = filasInformacion + `<tr><td></td><td></td><td></td><td></td><td>TOTAL</td><td>${formateaValor(montoTotal)}</td></tr>`;
-
-// Muestra en el navegador los datos calculados
-
-document.open();
-document.write(tituloPagina + nombreUsuario + "<table>" + nombreColumnas + filasInformacion + "</table>");
-document.close();

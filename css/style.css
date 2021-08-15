@@ -1,5 +1,9 @@
 body{
-    background-color: blue;
+    background-color: lightblue;
+}
+
+text{
+  color: white;
 }
 
 h1{
@@ -13,27 +17,3 @@ h2{
 p{
     color: white;
 }
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    color: white;
-    font-size: 24px;
-    background-color:rgb(150, 150, 150);
-  }  
-
-  th {
-    border: 1px solid #282727;
-    text-align: left;
-    padding: 8px;
-    color: black;
-    font-size: 24px;
-    background-color:rgb(150, 243, 250);
-  } 
