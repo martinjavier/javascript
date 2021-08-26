@@ -26,5 +26,9 @@ p{
 .table{
     margin: 20px;
     width: 90%;
+}
 
+#formRegistro{
+    margin: 20px;
+    width:40%;
 }

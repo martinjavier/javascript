@@ -1,8 +1,7 @@
-
 function inicial()
 {
     // Limpio el localStorage
-    localStorage.clear();
+   localStorage.clear();
 
     // Creamos una clase
     class Moneda{
@@ -63,7 +62,7 @@ function inicial()
 
     let datoParseado = JSON.stringify(monedas);
 
-    console.log(datoParseado);
+    //console.log(datoParseado);
 
     // Cargamos los valores en el localStorage
 
@@ -102,8 +101,6 @@ function muestroTabla()
     elementoTabla.innerHTML = nombreColumnas + filasInformacion;
 }
 
-
 // Procesos
 inicial();
 muestroTabla();
-

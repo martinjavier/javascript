@@ -1,6 +1,74 @@
 
 function inicial()
 {
+    // Creamos una clase
+    class Moneda{
+
+        constructor (nombre, precio, desc){
+            this.nombre = nombre
+            this.precio = precio
+            this.desc = desc
+        }
+    }
+
+    // Valores en U$D
+
+    var BTC = 46907.68;
+    var ETH = 3243.88;
+    var ADA = 2.18;
+    var BNB = 406.36;
+    var USDT = 1.00;
+    var XRP = 1.29;
+    var DOGE = 0.29;
+    var DOT = 22.71;
+    var SHIB = 0.000008073;
+    var SUN = 0.02988;
+
+    // Armo un arreglo
+
+    const monedas = [];
+
+    // Defino la información de cada moneda
+
+    const moneda01 = new Moneda("BTC", BTC, "Bitcoin");
+    const moneda02 = new Moneda("ETH", ETH, "Ethereum");
+    const moneda03 = new Moneda("ADA", ADA, "Cardano");
+    const moneda04 = new Moneda("BNB", BNB, "Binance Coin");
+    const moneda05 = new Moneda("USDT", USDT, "USDT");
+    const moneda06 = new Moneda("XRP", XRP, "XRP");
+    const moneda07 = new Moneda("DOGE", DOGE, "Doge Coin");
+    const moneda08 = new Moneda("DOT", DOT, "Polkadot");
+    const moneda09 = new Moneda("SHIB", SHIB, "Shiba Inu");
+    const moneda10 = new Moneda("SUN", SUN, "Sun");
+
+    // Agrego la información al arreglo
+
+    monedas.push(moneda01);
+    monedas.push(moneda02);
+    monedas.push(moneda03);
+    monedas.push(moneda04);
+    monedas.push(moneda05);
+    monedas.push(moneda06);
+    monedas.push(moneda07);
+    monedas.push(moneda08);
+    monedas.push(moneda09);
+    monedas.push(moneda10);
+
+    console.log(monedas);
+
+    // Convierto la información a texto plano para poder almacenarla en el localStorage
+
+    let datoParseado = JSON.stringify(monedas);
+
+    //console.log(datoParseado);
+
+    // Cargamos los valores en el localStorage
+
+    for(let i=0; i < monedas.length; i++)
+    {
+        localStorage.setItem("monedas", datoParseado);
+    }
+
     // Creamos el arreglo para almacenar mis monedas
 
     const misMonedas = [];    
@@ -41,13 +109,13 @@ function inicial()
     misMonedas.push(mimoneda09);
     misMonedas.push(mimoneda10);
 
-    // console.log(misMonedas);
+    console.log(misMonedas);
 
     // Convierto la información a texto plano para poder almacenarla en el localStorage
 
-    let datoParseado = JSON.stringify(misMonedas);
+    datoParseado = JSON.stringify(misMonedas);
 
-    // console.log(datoParseado);
+    console.log(datoParseado);
 
     // Cargamos los valores en el localStorage
 
@@ -76,14 +144,10 @@ function muestroTabla()
     datoDelStorage = localStorage.getItem("monedas");
     let monedas = JSON.parse(datoDelStorage);
 
-    // console.log(monedas);
-
     // Recupero información con la cantidad de las monedas en mi poder del localStorage
 
     datoDelStorage = localStorage.getItem("misMonedas");
     let misMonedas = JSON.parse(datoDelStorage);
-
-    // console.log(misMonedas);
 
     // Título de la Página
 
@@ -91,27 +155,51 @@ function muestroTabla()
 
     // Nombre de las Columnas 
 
-    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Cantidad</th><th>Valores</th></tr>`;
+    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Cantidad</th><th>Valores</th><th>Borrar</th><th>Editar</th></tr>`;
 
     // Filas con la información
 
     var filasInformacion = "";
     var valorCalculado;
+    var precioFormateado;
 
-    for(let i=0; i<monedas.length;i++)
+    for(let i=0 ; i < misMonedas.length ; i++)
     {
         valorCalculado = (misMonedas[i].cantidad * monedas[i].precio)
-        valorCalculado = formateaValor(valorCalculado);
-        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${formateaValor(monedas[i].precio)}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${valorCalculado}</td></tr>`;
+        valorCalculado = formateaValor(valorCalculado);   
+
+        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${valorCalculado}</td><td><button id="${misMonedas[i].nombre}" type="button" value="clickme" onclick="deleteCoin(${misMonedas[i].nombre});">X</button></td><td><button id="${misMonedas[i].nombre}" type="button" value="clickme" onclick="editCoin(${misMonedas[i].nombre});">edit</button></td></tr>`;
+
     }
 
     // Obtengo el identificador del elemento tabla en el DOM
 
     let elementoTabla = document.getElementById("tablaBilletera");
 
-    // Agrego a ese elemento las firmas que he armado con la información
+    // Agrego a ese elemento las filas que he armado con la información
 
     elementoTabla.innerHTML = nombreColumnas + filasInformacion;
+
+}
+
+const deleteCoin = (id) => {
+   
+    let todasMisMonedas = JSON.parse(localStorage.getItem("misMonedas"));
+    let todasMenosUna = todasMisMonedas.filter(e => e.id != id);
+    localStorage.setItem("misMonedas", JSON.stringify(todasMenosUna));
+    location.reload();
+}
+
+const editCoin = (id) => {
+       
+    console.log("Edit: " + id.nombre);
+    let todasMisMonedas = JSON.parse(localStorage.getItem("misMonedas"));
+    let seleccionoUna = todasMisMonedas.filter(e => e.id = id);
+    let conservoElResto = todasMisMonedas.filter(e => e.id != id);
+    let nuevoValor = prompt("Ingrese un nuevo valor para " + id.nombre);
+    seleccionoUna.cantidad = nuevoValor;
+    localStorage.setItem("misMonedas", JSON.stringify(seleccionoUna + conservoElResto));
+    location.reload();
 }
 
 // Procesos
