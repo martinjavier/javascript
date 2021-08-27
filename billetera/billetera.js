@@ -159,14 +159,28 @@ function muestroTabla()
 
     var filasInformacion = "";
     var valorCalculado;
+    var precio;
     var precioFormateado;
 
     for(let i=0 ; i < misMonedas.length ; i++)
     {
-        valorCalculado = (misMonedas[i].cantidad * monedas[i].precio)
-        valorCalculado = formateaValor(valorCalculado);   
+        valorCalculado = 0
 
-        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${valorCalculado}</td><td><button id="'${misMonedas[i].nombre}'" onclick="deleteCoin('${misMonedas[i].nombre}')">X</button></td><td><button id="'${misMonedas[i].nombre}'" onclick="editCoin('${misMonedas[i].nombre}');">edit</button></td></tr>`;
+        // Recorro Moendas para obtener el precio
+        for(let j=0; j<monedas.length;j++)
+        {
+            if (monedas[j].nombre == misMonedas[i].nombre)
+            {       
+                console.log(("Moneda: " + monedas[j].nombre + " MisMonedas: " + misMonedas[i].nombre));         
+                let cantidad = misMonedas[i].cantidad;
+                precio = monedas[j].precio;
+                valorCalculado = cantidad * precio;
+            }
+        }
+
+        precioFormateado = formateaValor(valorCalculado);   
+
+        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${precio}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${precioFormateado}</td><td><button id="'${misMonedas[i].nombre}'" onclick="deleteCoin('${misMonedas[i].nombre}')">X</button></td><td><button id="'${misMonedas[i].nombre}'" onclick="editCoin('${misMonedas[i].nombre}');">edit</button></td></tr>`;
 
     }
 
