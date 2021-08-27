@@ -109,8 +109,6 @@ function inicial()
     misMonedas.push(mimoneda09);
     misMonedas.push(mimoneda10);
 
-    console.log(misMonedas);
-
     // Convierto la información a texto plano para poder almacenarla en el localStorage
 
     datoParseado = JSON.stringify(misMonedas);
@@ -168,7 +166,7 @@ function muestroTabla()
         valorCalculado = (misMonedas[i].cantidad * monedas[i].precio)
         valorCalculado = formateaValor(valorCalculado);   
 
-        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${valorCalculado}</td><td><button id="${misMonedas[i].nombre}" type="button" value="clickme" onclick="deleteCoin(${misMonedas[i].nombre});">X</button></td><td><button id="${misMonedas[i].nombre}" type="button" value="clickme" onclick="editCoin(${misMonedas[i].nombre});">edit</button></td></tr>`;
+        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${misMonedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${formateaValor(misMonedas[i].cantidad)}</td><td>${valorCalculado}</td><td><button id="'${misMonedas[i].nombre}'" onclick="deleteCoin('${misMonedas[i].nombre}')">X</button></td><td><button id="'${misMonedas[i].nombre}'" onclick="editCoin('${misMonedas[i].nombre}');">edit</button></td></tr>`;
 
     }
 
@@ -183,23 +181,35 @@ function muestroTabla()
 }
 
 const deleteCoin = (id) => {
-   
-    let todasMisMonedas = JSON.parse(localStorage.getItem("misMonedas"));
-    let todasMenosUna = todasMisMonedas.filter(e => e.id != id);
-    localStorage.setItem("misMonedas", JSON.stringify(todasMenosUna));
-    location.reload();
+
+    let todasMisMonedas = JSON.parse(localStorage.getItem('misMonedas'));
+
+    let todasMenosUna = JSON.parse(localStorage.getItem('misMonedas')).filter(misMonedas => misMonedas.nombre != id);
+
+    localStorage.removeItem('misMonedas');
+
+    localStorage.setItem('misMonedas', JSON.stringify(todasMenosUna));
+
+    muestroTabla();
 }
 
 const editCoin = (id) => {
-       
-    console.log("Edit: " + id.nombre);
-    let todasMisMonedas = JSON.parse(localStorage.getItem("misMonedas"));
-    let seleccionoUna = todasMisMonedas.filter(e => e.id = id);
-    let conservoElResto = todasMisMonedas.filter(e => e.id != id);
-    let nuevoValor = prompt("Ingrese un nuevo valor para " + id.nombre);
-    seleccionoUna.cantidad = nuevoValor;
-    localStorage.setItem("misMonedas", JSON.stringify(seleccionoUna + conservoElResto));
-    location.reload();
+
+    let todasMisMonedas = JSON.parse(localStorage.getItem('misMonedas'));
+
+    for(let i=0; i< todasMisMonedas.length; i++)
+    {
+        if (JSON.stringify(todasMisMonedas[i].nombre).replace(/"/g,"") == id){
+            let nuevoValor = prompt("Ingrese una nueva cantidad para " + JSON.stringify(todasMisMonedas[i].nombre).replace(/"/g,""));
+            todasMisMonedas[i].cantidad = nuevoValor;
+        }
+    }
+
+    localStorage.removeItem('misMonedas');
+    localStorage.setItem('misMonedas', JSON.stringify(todasMisMonedas));
+
+    muestroTabla();
+
 }
 
 // Procesos
