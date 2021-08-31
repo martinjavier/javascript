@@ -56,13 +56,9 @@ function inicial()
     monedas.push(moneda09);
     monedas.push(moneda10);
 
-    console.log(monedas);
-
     // Convierto la información a texto plano para poder almacenarla en el localStorage
 
     let datoParseado = JSON.stringify(monedas);
-
-    //console.log(datoParseado);
 
     // Cargamos los valores en el localStorage
 
