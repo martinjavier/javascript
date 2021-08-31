@@ -109,6 +109,21 @@ function inicial()
 
     localStorage.setItem("misMonedas", datoParseado);  
 
+    // Asocio el botón de Reset
+
+    let resetButton = $('#resetButton');
+
+    // Capturo el método Click del botón y borro el localStorage
+
+    resetButton.on("click", () => {
+
+        // Borro misMonedas del localStorage
+        localStorage.removeItem("misMonedas");
+        inicial();
+        muestroTabla();
+
+    })
+
 }
 
 function muestroTabla()
