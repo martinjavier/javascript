@@ -1,6 +1,6 @@
 body{
     background-color: lightblue;
-    font-size : 25px;
+    font-size : 20px;
 }
 
 text{
@@ -27,7 +27,7 @@ h2{
 
 .table{
     margin: 20px;
-    width: 90%;
+    width: 80%;
 }
 
 #formRegistro{

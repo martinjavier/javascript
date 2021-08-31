@@ -64,10 +64,7 @@ function inicial()
 
     // Cargamos los valores en el localStorage
 
-    for(let i=0; i < monedas.length; i++)
-    {
-        localStorage.setItem("monedas", datoParseado);
-    }
+    localStorage.setItem("monedas", datoParseado);
 
     // Creamos el arreglo para almacenar mis monedas
 
@@ -117,10 +114,11 @@ function inicial()
 
     // Cargamos los valores en el localStorage
 
-    for(let i=0; i < misMonedas.length; i++)
+    if (localStorage.getItem("misMonedas") == false)
     {
         localStorage.setItem("misMonedas", datoParseado);
-    }
+    }   
+
 }
 
 function muestroTabla()
@@ -128,14 +126,6 @@ function muestroTabla()
     // Defino variables
 
     let datoDelStorage;
-
-    // Defino métodos
-
-    function formateaValor(valorA)
-    {
-        var resultado = Number(valorA).toLocaleString('en');
-        return resultado;
-    }
 
     // Recupero información con el precio de las monedas del localStorage
 
@@ -160,7 +150,6 @@ function muestroTabla()
     var filasInformacion = "";
     var valorCalculado;
     var precio;
-    var precioFormateado;
 
     for(let i=0 ; i < misMonedas.length ; i++)
     {
@@ -170,22 +159,22 @@ function muestroTabla()
         for(let j=0; j<monedas.length;j++)
         {
             if (monedas[j].nombre == misMonedas[i].nombre)
-            {       
-                console.log(("Moneda: " + monedas[j].nombre + " MisMonedas: " + misMonedas[i].nombre));         
+            {
                 let cantidad = misMonedas[i].cantidad;
                 precio = monedas[j].precio;
                 valorCalculado = cantidad * precio;
             }
         }
 
-        precioFormateado = formateaValor(valorCalculado);   
-
         filasInformacion = filasInformacion + `<tr><td>${i+1}</td>
         <td>${misMonedas[i].nombre}</td>
-        <td>${precio}</td>
+        <td>${formateaValor(precio)}</td>
         <td>${formateaValor(misMonedas[i].cantidad)}</td>
-        <td>${precioFormateado}</td>        
-        <td align="center"><button id="'${misMonedas[i].nombre}'" onclick="deleteCoin('${misMonedas[i].nombre}')" type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg></button></td>
+        <td>${formateaValor(valorCalculado)}</td>        
+        <td align="center"><button id="'${misMonedas[i].nombre}'" onclick="deleteCoin('${misMonedas[i].nombre}')" type="button" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg>
+        </button></td>
         <td align="center"><button type="button" class="btn btn-lg btn-primary" id="'${misMonedas[i].nombre}'" onclick="editCoin('${misMonedas[i].nombre}');">Editar</button></td>
         </tr>`;
     }
@@ -198,6 +187,15 @@ function muestroTabla()
 
     elementoTabla.innerHTML = nombreColumnas + filasInformacion;
 
+    calculoTotal();
+
+}
+
+function formateaValor(valor)
+{
+    valor = parseFloat(valor).toFixed(2);
+    var resultado = Number(valor).toLocaleString('es');
+    return resultado;
 }
 
 const deleteCoin = (id) => {
@@ -229,6 +227,41 @@ const editCoin = (id) => {
     localStorage.setItem('misMonedas', JSON.stringify(todasMisMonedas));
 
     muestroTabla();
+
+}
+
+const calculoTotal = () => {
+
+    let valorAcumulado = 0;
+
+    let datoDelStorage = localStorage.getItem("misMonedas");
+    let misMonedas = JSON.parse(datoDelStorage);
+
+    datoDelStorage = localStorage.getItem("monedas");
+    let monedas = JSON.parse(datoDelStorage);
+
+    for(let i=0 ; i < misMonedas.length ; i++)
+    {
+        let valorCalculado = 0;
+
+        // Recorro Moendas para obtener el precio
+        for(let j=0; j<monedas.length;j++)
+        {
+            if (monedas[j].nombre == misMonedas[i].nombre)
+            {                
+                let cantidad = misMonedas[i].cantidad;
+                precio = monedas[j].precio;
+                valorCalculado = cantidad * precio;
+            }
+        }
+
+        valorAcumulado += valorAcumulado + valorCalculado;
+  
+    }
+
+    let monto = $('#montoTotal');
+    var valorFormateado = formateaValor(valorAcumulado);
+    monto.text(`Total $ ${valorFormateado}`);
 
 }
 

@@ -66,10 +66,8 @@ function inicial()
 
     // Cargamos los valores en el localStorage
 
-    for(let i=0; i < monedas.length; i++)
-    {
-        localStorage.setItem("monedas", datoParseado);
-    }
+    localStorage.setItem("monedas", datoParseado);
+
 }
 
 function muestroTabla()
@@ -89,7 +87,11 @@ function muestroTabla()
 
     for(let i=0; i<monedas.length;i++)
     {
-        filasInformacion = filasInformacion + `<tr><td>${i+1}</td><td>${monedas[i].nombre}</td><td>${monedas[i].precio}</td><td>${monedas[i].desc}</td></tr>`;
+        filasInformacion = filasInformacion + `<tr>
+        <td>${i+1}</td>
+        <td>${monedas[i].nombre}</td>
+        <td>${monedas[i].precio}</td>
+        <td>${monedas[i].desc}</td></tr>`;
     }
 
     // Obtengo el identificador del elemento tabla en el DOM
@@ -99,6 +101,13 @@ function muestroTabla()
     // Agrego a ese elemento las filas que he armado con la información
 
     elementoTabla.innerHTML = nombreColumnas + filasInformacion;
+}
+
+function formateaValor(valor)
+{
+    valor = parseFloat(valor).toFixed(2);
+    var resultado = Number(valor).toLocaleString('es');
+    return resultado;
 }
 
 // Procesos
