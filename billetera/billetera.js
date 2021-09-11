@@ -260,7 +260,7 @@ const calculoTotal = () => {
             }
         }
 
-        valorAcumulado += valorAcumulado + valorCalculado;
+        valorAcumulado = valorAcumulado + valorCalculado;
   
     }
 

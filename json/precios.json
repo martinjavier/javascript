@@ -1,0 +1,72 @@
+[
+    {
+        "Nombre": "BTC",
+        "URL" : "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+        "Precio": 45805.00,
+        "Descripcion": "Bitcoin",
+        "Consulta": "bitcoin.usd"
+    }, 
+    {
+        "Nombre": "ETH",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd",
+        "Precio": 3321.46,
+        "Descripcion": "Ethereum",
+        "Consulta": "ethereum.usd"
+    },
+    {
+        "Nombre": "ADA",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd",
+        "Precio": 2.72,
+        "Descripcion": "Cardano",
+        "Consulta": "cardano.usd"
+    },
+    {
+        "Nombre": "BNB",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd",
+        "Precio": 413.14,
+        "Descripcion": "Binance Coin",
+        "Consulta": "binancecoin.usd"
+    }, 
+    {
+        "Nombre": "USDT",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd",
+        "Precio": 1.00,
+        "Descripcion": "Tether",
+        "Consulta": "tether.usd"
+    }, 
+    {
+        "Nombre":"XRP",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd",
+        "Precio": 1.10,
+        "Descripcion": "Ripple",
+        "Consulta": "ripple.usd"
+    }, 
+    {
+        "Nombre": "DOGE",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd",
+        "Precio": 0.23,
+        "Descripcion": "Doge Coin",
+        "Consulta": "dogecoin.usd"
+    }, 
+    {
+        "Nombre": "DOT",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=polkadot&vs_currencies=usd",
+        "Precio": 31.42,
+        "Descripcion": "Polkadot",
+        "Consulta": "polkadot.usd"
+    },  
+    {
+        "Nombre": "SHIB",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=shiba-inu&vs_currencies=usd",
+        "Precio": 0.00000695,
+        "Descripcion": "Shiba Inu",
+        "Consulta": "shiba-inu.usd"
+    }, 
+    {
+        "Nombre": "SUN",
+        "URL": "https://api.coingecko.com/api/v3/simple/price?ids=sun&vs_currencies=usd",
+        "Precio": 0.03220050,
+        "Descripcion": "SUN",
+        "Consulta": "sun.usd"
+    }
+]

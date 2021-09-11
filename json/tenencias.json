@@ -1,0 +1,42 @@
+[
+    {
+        "Moneda": "BTC",
+        "Cantidad": 0.50
+    }, 
+    {
+        "Moneda": "ETH",
+        "Cantidad": 5.00
+    },
+    {
+        "Moneda": "ADA",
+        "Cantidad": 300.00
+    },
+    {
+        "Moneda": "BNB",
+        "Cantidad": 43.50
+    }, 
+    {
+        "Moneda": "USDT",
+        "Cantidad": 100.00
+    }, 
+    {
+        "Moneda":"XRP",
+        "Cantidad": 350.00
+    }, 
+    {
+        "Moneda": "DOGE",
+        "Cantidad": 4500.00
+    }, 
+    {
+        "Moneda": "DOT",
+        "Cantidad": 35.22
+    },  
+    {
+        "Moneda": "SHIB",
+        "Cantidad": 500000000.00
+    }, 
+    {
+        "Moneda": "SUN",
+        "Cantidad": 40000.00
+    }
+]

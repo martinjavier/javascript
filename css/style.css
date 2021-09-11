@@ -38,5 +38,9 @@ h2{
 .navbar-light .navbar-brand {
     margin-left: 10px;
     font-size: 35px;
-    color: rgba(35, 230, 18, 0.9);
+    color: rgba(35, 230, 18, 0.9);    
+}
+
+.navbar{
+    background-image: linear-gradient(lightblue, white, lightblue);
 }

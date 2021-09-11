@@ -1,0 +1,71 @@
+[
+    {"casa":
+        {
+            "Moneda": "BTC",
+            "Precio" : 46907.68,
+            "Descripcion": "Bitcoin"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "ETH",
+            "Precio": 3243.88,
+            "Descripcion": "Ethereum"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "ADA",
+            "Precio": 2.18,
+            "Descripcion": "Cardano"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "BNB",
+            "Precio": 406.36,
+            "Descripcion": "Binance Coin"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "USDT",
+            "Precio": 1.00,
+            "Descripcion": "Tether"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda":"XRP",
+            "Precio": 1.29,
+            "Descripcion": "XRP"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "DOGE",
+            "Precio": 0.29,
+            "Descripcion": "Doge Coin"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "DOT",
+            "Precio": 22.71,
+            "Descripcion": "Polkadot"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "SHIB",
+            "Precio": 0.000008073,
+            "Descripcion": "Shiba Inu"
+        }
+    },
+    {"casa":  
+        {
+            "Moneda": "SUN",
+            "Precio": 0.02988,
+            "Descripcion": "SUN"
+        }
+    }]
