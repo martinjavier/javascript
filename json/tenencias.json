@@ -1,42 +1,62 @@
 [
     {
-        "Moneda": "BTC",
+        "Nombre": "BTC",
+        "Precio": 45805.00,
+        "Descripcion": "Bitcoin",
         "Cantidad": 0.50
     }, 
     {
-        "Moneda": "ETH",
+        "Nombre": "ETH",
+        "Precio": 3321.46,
+        "Descripcion": "Ethereum",
         "Cantidad": 5.00
     },
     {
-        "Moneda": "ADA",
+        "Nombre": "ADA",
+        "Precio": 2.72,
+        "Descripcion": "Cardano",
         "Cantidad": 300.00
     },
     {
-        "Moneda": "BNB",
+        "Nombre": "BNB",
+        "Precio": 413.14,
+        "Descripcion": "Binance Coin",
         "Cantidad": 43.50
     }, 
     {
-        "Moneda": "USDT",
+        "Nombre": "USDT",
+        "Precio": 1.00,
+        "Descripcion": "Tether",
         "Cantidad": 100.00
     }, 
     {
-        "Moneda":"XRP",
+        "Nombre":"XRP",
+        "Precio": 1.10,
+        "Descripcion": "Ripple",
         "Cantidad": 350.00
     }, 
     {
-        "Moneda": "DOGE",
+        "Nombre": "DOGE",
+        "Precio": 0.23,
+        "Descripcion": "Doge Coin",
         "Cantidad": 4500.00
     }, 
     {
-        "Moneda": "DOT",
+        "Nombre": "DOT",
+        "Precio": 31.42,
+        "Descripcion": "Polkadot",
         "Cantidad": 35.22
     },  
     {
-        "Moneda": "SHIB",
+        "Nombre": "SHIB",
+        "Precio": 0.00000695,
+        "Descripcion": "Shiba Inu",
         "Cantidad": 500000000.00
     }, 
     {
-        "Moneda": "SUN",
+        "Nombre": "SUN",
+        "Precio": 0.03220050,
+        "Descripcion": "SUN",
         "Cantidad": 40000.00
     }
 ]
