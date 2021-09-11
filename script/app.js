@@ -30,17 +30,14 @@ function inicial()
             // Cargo los valores en el localStorage
             localStorage.setItem("monedas", datoParseado); 
             
-            // Nombre de las Columnas 
-
+            // Nombre de las Columnas
             var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Descripción</th></tr>`;
 
             // Recupero información del localStorage
-
             let datoDelStorage = localStorage.getItem("monedas");
             let lasMonedas = JSON.parse(datoDelStorage);
 
             // Filas con la información
-
             var filasInformacion = "";
 
             for(let i=0; i<lasMonedas.length;i++)
@@ -53,7 +50,6 @@ function inicial()
             }
 
             // Obtengo el identificador del elemento tabla en el DOM
-
             let elementoTabla = document.getElementById("tabla");
 
             // Agrego a ese elemento las filas que he armado con la información
