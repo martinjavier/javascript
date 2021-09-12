@@ -4,11 +4,11 @@ body{
 }
 
 text{
-  color: white;
+    color: white;
 }
 
 a{
-    font-weight: 700;
+    font-weight: 1000;
 }
 
 h1{
@@ -27,7 +27,7 @@ h2{
 
 .table{
     margin: 20px;
-    width: 80%;
+    width: 95%;
 }
 
 #formRegistro{
@@ -41,8 +41,7 @@ h2{
     color: rgba(35, 230, 18, 0.9);
 }
 
-#cabeceraBilletera{
-  
+#cabeceraBilletera{  
     display: grid;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: 100%;
@@ -50,9 +49,14 @@ h2{
     width: 100%;
 }
 
+#montoTotal{
+    font-size: 35px;
+    margin-top: 30px;
+}
+
 #tablaBilletera{
     margin: 20px;
-    width: 80%;
+    width: 95%;
 }
 
 .Columna1{
