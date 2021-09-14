@@ -3,6 +3,9 @@ function inicial()
     // Limpio el localStorage
     localStorage.removeItem('mismonedas');
 
+    localStorage.removeItem('miEfectivo');
+    localStorage.setItem("miEfectivo", 52500.00);  
+
     // Creamos una clase
     class MiMoneda{
 
@@ -38,10 +41,9 @@ function inicial()
     });
 }
 
-function formateaValor(valor)
+function formateaNumero(valor)
 {
-    valor = parseFloat(valor).toFixed(2);
-    var resultado = Number(valor).toLocaleString('es');
+    var resultado = Number(valor);
     return resultado;
 }
 
@@ -82,6 +84,114 @@ const editCoin = (id) =>{
 
 }
 
+// ********************************************
+// En base a la cantidad de efectivo que tengo,
+// me permite comprar una criptomoneda
+// ********************************************
+const comprarCoin = (id) =>{
+
+    // Recupero del localStorage mis monedas
+    let todasMisMonedas = JSON.parse(localStorage.getItem('mismonedas'));
+    
+    // Recupero cuando dispongo en mi billetera
+    let totalDeEfectivo = JSON.parse(localStorage.getItem('miEfectivo'));
+
+    for(let i=0; i< todasMisMonedas.length; i++)    
+    {        
+        nombreMoneda = JSON.stringify(todasMisMonedas[i].nombre).replace(/"/g,"");
+        if (nombreMoneda == id){
+            let precioMoneda = JSON.stringify(todasMisMonedas[i].precio);
+            let cantidadAComprar = prompt("Ingrese cuanto " + nombreMoneda +  " quiere comprar");
+            let totalNecesario = cantidadAComprar * precioMoneda;
+            if (totalDeEfectivo >= totalNecesario)
+            {
+                let cantidad = JSON.stringify(todasMisMonedas[i].cantidad);
+                cantidad = formateaNumero(cantidad);
+                console.log("Cantidad: " + cantidad);
+                console.log("Cantidad a Comprar: " + cantidadAComprar);
+                cantidad += formateaNumero(cantidadAComprar);                
+                todasMisMonedas[i].cantidad = cantidad;
+                totalDeEfectivo -= totalNecesario
+            } 
+            else
+            {
+                alert("No dispone de suficiente efectivo para comprar " + cantidadAComprar + " " + nombreMoneda);
+            }            
+        }
+    }
+
+    // Almaceno los valores en el localStorage
+    localStorage.setItem('mismonedas', JSON.stringify(todasMisMonedas));
+    localStorage.setItem('miEfectivo', JSON.stringify(totalDeEfectivo));
+
+    mostrarTabla();
+
+}
+
+// ********************************************
+// Me permite vender una criptomoneda y volcar
+// ese dinero en mi cantidad de efectivo
+// ********************************************
+const venderCoin = (id) =>{
+
+    console.log("Moneda a vender: "+id);
+
+    // Recupero del localStorage mis monedas
+    let todasMisMonedas = JSON.parse(localStorage.getItem('mismonedas'));
+
+    console.log("Todas Mis Monedas: " + todasMisMonedas);
+    
+    // Recupero cuando dispongo en mi billetera
+    let totalDeEfectivo = JSON.parse(localStorage.getItem('miEfectivo'));
+
+    console.log("Total De Efectivo: " + totalDeEfectivo);
+
+    for(let i=0; i< todasMisMonedas.length; i++)    
+    {        
+        nombreMoneda = JSON.stringify(todasMisMonedas[i].nombre).replace(/"/g,"");
+
+        console.log("Nombre Moneda: " + nombreMoneda);
+
+        if (nombreMoneda == id){
+            
+            let precioMoneda = formateaNumero(JSON.stringify(todasMisMonedas[i].precio));
+            console.log("Precio Moneda: " + precioMoneda);
+
+            let cantidadDisponible = formateaNumero(JSON.stringify(todasMisMonedas[i].cantidad));
+            console.log("Cantidad Disponible: " + cantidadDisponible);
+
+            let cantidadAVender = prompt("Ingrese cuanto " + nombreMoneda +  " quiere vender");
+            cantidadAVender = formateaNumero(cantidadAVender);
+            console.log("Cantidad a Vender: " + cantidadAVender);
+           
+            if (cantidadAVender <= cantidadDisponible)
+            {   
+                // Calculo la nueva cantidad de esa criptomoneda
+                cantidadDisponible -= cantidadAVender;                
+                todasMisMonedas[i].cantidad = cantidadDisponible;
+                // Calculo cuanto aumentó mi efectivo
+                let efectivoRecibido = cantidadAVender * precioMoneda
+                totalDeEfectivo += efectivoRecibido;
+            } 
+            else
+            {
+                alert("No dispone de " + cantidadAVender + " " + nombreMoneda + " para venderlos.");
+            }            
+        }
+    }
+
+    // Almaceno los valores en el localStorage
+    localStorage.setItem('mismonedas', JSON.stringify(todasMisMonedas));
+    localStorage.setItem('miEfectivo', JSON.stringify(totalDeEfectivo));
+
+    mostrarTabla();
+
+}
+
+// ****************************************************
+// Hace un cálculo de cuanto equivale en dólares
+// el valor total de las criptomonedas en mi portafolio
+// ****************************************************
 function calculoTotal(){
 
     let valorAcumulado = 0;
@@ -100,8 +210,24 @@ function calculoTotal(){
     }
 
     let monto = $('#montoTotal');
-    var valorFormateado = formateaValor(valorAcumulado);
-    monto.text(`Total $ ${valorFormateado}`);
+    var valorFormateado = formateaNumero(valorAcumulado);
+    valorFormateado = valorFormateado.toFixed(2);
+
+    monto.text(`Portafolio $ ${valorFormateado}`);
+
+}
+
+// ****************************************************
+// Recupera del localStorage la cantidad de dinero
+// líquido que dispongo para operar
+// ****************************************************
+function miEfectivo(){
+
+    let datoDelStorage = localStorage.getItem("miEfectivo");
+    let cantidadDeEfectivo = JSON.parse(datoDelStorage);
+    let monto = $('#cantidadEfectivo');
+    var valorFormateado = formateaNumero(cantidadDeEfectivo);
+    monto.text(`Efectivo $ ${valorFormateado.toFixed(2)}`);
 
 }
 
@@ -117,7 +243,7 @@ function mostrarTabla()
 
     // Nombre de las Columnas 
 
-    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Cantidad</th><th>Valores</th><th class="text-center">Borrar</th><th class="text-center">Editar Cantidad</th></tr>`;
+    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Valores</th><th class="text-center">Comprar</th><th class="text-center">Vender</th></tr>`;
 
     // Filas con la información
 
@@ -129,21 +255,29 @@ function mostrarTabla()
 
     for(let i=0 ; i < monedas.length ; i++)
     {
-        nombre = monedas[i].nombre;     
-        precio = monedas[i].precio;
-        cantidad = monedas[i].cantidad;                    
+        nombre = monedas[i].nombre; 
+        desc = monedas[i].descripcion;    
+        precio = formateaNumero(monedas[i].precio);
+        cantidad = formateaNumero(monedas[i].cantidad);
         valorCalculado = cantidad * precio;
-
+        valorCalculado = valorCalculado.toFixed(2);
+        
         filasInformacion = filasInformacion + `<tr><td>${i+1}</td>
         <td>${nombre}</td>
-        <td>${formateaValor(precio)}</td>
-        <td>${formateaValor(cantidad)}</td>
-        <td>${formateaValor(valorCalculado)}</td>        
-        <td align="center"><button id="'${nombre}'" onclick="deleteCoin('${nombre}')" type="button" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg>
-        </button></td>
-        <td align="center"><button type="button" class="btn btn-lg btn-primary" id="'${nombre}'" onclick="editCoin('${nombre}');">Editar</button></td>
+        <td>${desc}</td>
+        <td>${(precio.toLocaleString('en'))}</td>
+        <td>${(cantidad.toLocaleString('en'))}</td>
+        <td>${(valorCalculado)}</td>       
+        <td align="center">
+          <button type="button" class="btn btn-success" id="'${nombre}'" onclick="comprarCoin('${nombre}');">
+            $<span class="glyphicon glyphicon-usd"></span>
+          </button>
+        </td>
+        <td align="center">
+          <button type="button" class="btn btn-danger" id="'${nombre}'" onclick="venderCoin('${nombre}');">
+          $<span class="glyphicon glyphicon-usd"></span>
+          </button>
+        </td>
         </tr>`;
     }
 
@@ -167,7 +301,8 @@ function mostrarTabla()
         inicial();
     })
 
-    calculoTotal();    
+    calculoTotal();   
+    miEfectivo(); 
 }
 
 // Procesos

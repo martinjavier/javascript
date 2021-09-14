@@ -54,6 +54,12 @@ h2{
     margin-top: 30px;
 }
 
+#cantidadEfectivo{
+    font-size: 35px;
+    margin-top: 30px;
+    color: rgb(114, 114, 252);
+}
+
 #tablaBilletera{
     margin: 20px;
     width: 95%;
