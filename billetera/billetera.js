@@ -110,15 +110,20 @@ const comprarCoin = (id) =>{
                 totalDeEfectivo -= totalNecesario
 
                 Swal.fire({
+                    icon: 'success',
                     type:'success',
                     title:'Compra exitosa',
-                    Text:'Operación realizada'
+                    text:'Operación realizada'
                   })
 
             } 
             else
             {
-                alert("No dispone de suficiente efectivo para comprar " + cantidadAComprar + " " + nombreMoneda);
+                Swal.fire({
+                    icon: 'error',
+                    type:'error',
+                    title:'No dispone de suficiente efectivo para realizar esa compra'
+                  })
             }            
         }
     }
@@ -164,14 +169,20 @@ const venderCoin = (id) =>{
                 totalDeEfectivo += efectivoRecibido;
 
                 Swal.fire({
+                    icon: 'success',
                     type:'success',
-                    title:'Venta exitosa',
-                    Text:'Operación realizada'
+                    title:'Venta exitosa'
                   })
             } 
             else
             {
-                alert("No dispone de " + cantidadAVender + " " + nombreMoneda + " para venderlos.");
+                //alert("No dispone de " + cantidadAVender + " " + nombreMoneda + " para venderlos.");
+                Swal.fire({
+                    icon: 'error',
+                    type:'error',
+                    title:'No dispone de suficiente cantidad de esa criptomoneda para realizar esa venta'
+                  })
+
             }            
         }
     }
