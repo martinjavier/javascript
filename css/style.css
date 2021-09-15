@@ -104,3 +104,194 @@ h2{
 .navbar{
     background-image: linear-gradient(lightblue, white, lightblue);
 }
+
+
+/* Pantallas Pequeñas */
+@media only screen and (max-width: 600px){
+
+    #montoTotal{
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    
+    #cantidadEfectivo{
+        font-size: 20px;
+        margin-top: 15px;
+        color: rgb(114, 114, 252);
+    }
+
+    .navbar-light .navbar-brand {
+        margin-left: 10px;
+        font-size: 20px;
+        color: rgba(35, 230, 18, 0.9);
+    }
+    
+    body{
+        background-color: lightblue;
+        font-size : 14px;
+    }
+    
+    .Columna1{
+        grid-area: columna1;
+        width: 80%;
+    }
+    
+    .Columna2{
+        grid-area: columna2;
+        width: 80%;
+    }
+
+    /*
+    body{
+        header{
+            height: 250px;
+            p{
+                padding-top: 2px;
+                font-size: 25px;
+                text-shadow: 2px 2px 2px black;
+            }
+        }
+    }
+    
+    body{
+        footer{
+            p{
+                font-size: 20px;
+                text-shadow: 2px 2px 2px black;
+            }
+        }
+    }
+    
+    .contenedorFormulario{
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1fr;
+        grid-template-areas: "formulario";
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+        font-size: 15px;
+        width: 100%;
+    }
+    
+    .videos{
+        width: 100%;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: 70%;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-areas: "video1"
+                             "video2"
+                             "video3"
+                             "video4"
+                             "video5"
+                             "video6";
+        align-items: center;
+        justify-items: center;
+    }
+
+    fieldset label{
+        font-size: 15px;
+        margin: 5px;
+    }
+    
+    fieldset input{
+        font-size: 15px;
+        margin: 5px;
+        width: 125px;
+    }
+    
+    form textarea{
+        font-size: 15px;
+        margin: 5px;
+    }
+        
+    form textarea{
+        font-size: 15px;
+        margin: 5px;
+    }
+    
+    .menu{
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+
+    nav{
+        ul{
+           li{
+                text-decoration: none;
+                list-style-type: none;
+                padding: 0px 0px 0px 0px;
+                margin: 5px;
+                font-style: normal;
+                width: 80%;
+           }
+        }
+    }
+
+    @for $i from 1 through 6{
+
+        .video-#{$i}{
+            grid-area: video#{$i};
+            width: 100%;
+            height: 188px;
+            padding: 10px;
+        }
+    
+    }
+
+    //Fotografías 
+
+    .mainFotos{
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        grid-template-rows: auto ;
+        grid-template-areas: ". misFotos .";
+        justify-items: center;
+    }
+  
+    .carousel{
+        grid-area: misFotos;
+        width: 100%;
+    }
+
+    #carouselExampleControls{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .mainInicio{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .mainVideos{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .mainRefugios{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .mainContacto{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    */
+
+} 
+
+

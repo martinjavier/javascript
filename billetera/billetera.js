@@ -1,3 +1,4 @@
+
 function inicial()
 {
     // Limpio el localStorage
@@ -27,7 +28,6 @@ function inicial()
     $.get(misMonedasURL, function (respuesta, estado) {
         if(estado === "success"){
             respuesta.forEach(e => {
-                console.log(e.Nombre, e.Precio, e.Descripcion, e.Cantidad);
                 const moneda = new MiMoneda(e.Nombre, e.Precio, e.Descripcion, e.Cantidad);
                 misMonedas.push(moneda);
             })
@@ -61,8 +61,6 @@ function deleteCoin(id){
 }
 
 const editCoin = (id) =>{
-
-    console.log("Moneda a editar: " + id);
 
     let todasMisMonedas = JSON.parse(localStorage.getItem('mismonedas'));
 
@@ -107,11 +105,16 @@ const comprarCoin = (id) =>{
             {
                 let cantidad = JSON.stringify(todasMisMonedas[i].cantidad);
                 cantidad = formateaNumero(cantidad);
-                console.log("Cantidad: " + cantidad);
-                console.log("Cantidad a Comprar: " + cantidadAComprar);
                 cantidad += formateaNumero(cantidadAComprar);                
                 todasMisMonedas[i].cantidad = cantidad;
                 totalDeEfectivo -= totalNecesario
+
+                Swal.fire({
+                    type:'success',
+                    title:'Compra exitosa',
+                    Text:'Operación realizada'
+                  })
+
             } 
             else
             {
@@ -134,35 +137,22 @@ const comprarCoin = (id) =>{
 // ********************************************
 const venderCoin = (id) =>{
 
-    console.log("Moneda a vender: "+id);
-
     // Recupero del localStorage mis monedas
     let todasMisMonedas = JSON.parse(localStorage.getItem('mismonedas'));
-
-    console.log("Todas Mis Monedas: " + todasMisMonedas);
     
     // Recupero cuando dispongo en mi billetera
     let totalDeEfectivo = JSON.parse(localStorage.getItem('miEfectivo'));
-
-    console.log("Total De Efectivo: " + totalDeEfectivo);
 
     for(let i=0; i< todasMisMonedas.length; i++)    
     {        
         nombreMoneda = JSON.stringify(todasMisMonedas[i].nombre).replace(/"/g,"");
 
-        console.log("Nombre Moneda: " + nombreMoneda);
-
         if (nombreMoneda == id){
             
             let precioMoneda = formateaNumero(JSON.stringify(todasMisMonedas[i].precio));
-            console.log("Precio Moneda: " + precioMoneda);
-
             let cantidadDisponible = formateaNumero(JSON.stringify(todasMisMonedas[i].cantidad));
-            console.log("Cantidad Disponible: " + cantidadDisponible);
-
             let cantidadAVender = prompt("Ingrese cuanto " + nombreMoneda +  " quiere vender");
             cantidadAVender = formateaNumero(cantidadAVender);
-            console.log("Cantidad a Vender: " + cantidadAVender);
            
             if (cantidadAVender <= cantidadDisponible)
             {   
@@ -172,6 +162,12 @@ const venderCoin = (id) =>{
                 // Calculo cuanto aumentó mi efectivo
                 let efectivoRecibido = cantidadAVender * precioMoneda
                 totalDeEfectivo += efectivoRecibido;
+
+                Swal.fire({
+                    type:'success',
+                    title:'Venta exitosa',
+                    Text:'Operación realizada'
+                  })
             } 
             else
             {
@@ -243,7 +239,7 @@ function mostrarTabla()
 
     // Nombre de las Columnas 
 
-    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Valores</th><th class="text-center">Comprar</th><th class="text-center">Vender</th></tr>`;
+    var nombreColumnas = `<tr><th>#</th><th>Token</th><th>Precio</th><th>Cantidad</th><th>Valores</th><th class="text-center">Comprar</th><th class="text-center">Vender</th></tr>`;
 
     // Filas con la información
 
@@ -256,7 +252,6 @@ function mostrarTabla()
     for(let i=0 ; i < monedas.length ; i++)
     {
         nombre = monedas[i].nombre; 
-        desc = monedas[i].descripcion;    
         precio = formateaNumero(monedas[i].precio);
         cantidad = formateaNumero(monedas[i].cantidad);
         valorCalculado = cantidad * precio;
@@ -264,7 +259,7 @@ function mostrarTabla()
         
         filasInformacion = filasInformacion + `<tr><td>${i+1}</td>
         <td>${nombre}</td>
-        <td>${desc}</td>
+
         <td>${(precio.toLocaleString('en'))}</td>
         <td>${(cantidad.toLocaleString('en'))}</td>
         <td>${(valorCalculado)}</td>       
