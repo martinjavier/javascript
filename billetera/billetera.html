@@ -11,33 +11,38 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">CoinWallet</a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="../index.html">Precios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./billetera.html">Portfolio</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <p class="h3" id="montoTotal"></p>
-            </ul>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <button class="btn btn-primary" type="button" id="resetButton">Reset</button>
-           </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CoinWallet</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Precios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./billetera.html">Portfolio</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <p class="h1">Mis tenencias</p>
+      <div id="cabeceraBilletera">
+        <div class="Columna1">
+          <p class="h1">Mis tenencias</p>
+        </div>
+        <div class="Columna2">
+          <p class="h1" id="montoTotal"></p>
+        </div>
+        <div class="Columna3">
+          <br>
+          <button class="btn btn-primary" type="button" id="resetButton">Reset</button>
+        </div>
+      </div>
 
       <table class="table table-success table-striped" id="tablaBilletera">
 
     </table>
-
+    
     <script src="../script/jquery-3.6.0.min.js"></script>
     <script src="./billetera.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

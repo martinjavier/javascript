@@ -1,0 +1,52 @@
+[
+    {
+        "Moneda": "BTC",
+        "Precio" : 46907.68,
+        "Descripcion": "Bitcoin"
+    },
+    {
+        "Moneda": "ETH",
+        "Precio": 3243.88,
+        "Descripcion": "Ethereum"
+    },
+    {
+        "Moneda": "ADA",
+        "Precio": 2.18,
+        "Descripcion": "Cardano"
+    },
+    {
+        "Moneda": "BNB",
+        "Precio": 406.36,
+        "Descripcion": "Binance Coin"
+    },
+    {
+        "Moneda": "USDT",
+        "Precio": 1.00,
+        "Descripcion": "Tether"
+    },
+    {
+        "Moneda":"XRP",
+        "Precio": 1.29,
+        "Descripcion": "XRP"
+    },
+    {
+        "Moneda": "DOGE",
+        "Precio": 0.29,
+        "Descripcion": "Doge Coin"
+    },
+    {
+        "Moneda": "DOT",
+        "Precio": 22.71,
+        "Descripcion": "Polkadot"
+    },
+    {
+        "Moneda": "SHIB",
+        "Precio": 0.000008073,
+        "Descripcion": "Shiba Inu"
+    },
+    {
+        "Moneda": "SUN",
+        "Precio": 0.02988,
+        "Descripcion": "SUN"
+    }
+]

@@ -1,0 +1,12 @@
+{
+    "BTC" : "Bitcoin",
+    "ETH" : "Ethereum",
+    "ADA" : "Cardano",
+    "BNB" : "Binance Coin",
+    "USDT" : "Tether",
+    "XRP" : "XRP",
+    "DOGE" : "Doge Coin",
+    "DOT" : "Polkadot",
+    "SHIB" : "Shiba Inu",
+    "SUN" : "SUN"
+}

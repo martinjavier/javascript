@@ -1,7 +1,7 @@
 function inicial()
 {
     // Limpio el localStorage
-   localStorage.clear();
+    localStorage.clear();
 
     // Creamos una clase
     class Moneda{

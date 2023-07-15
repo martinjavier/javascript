@@ -40,3 +40,53 @@ h2{
     font-size: 35px;
     color: rgba(35, 230, 18, 0.9);
 }
+
+#cabeceraBilletera{
+  
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 100%;
+    grid-template-areas: "columna1 columna2 columna3";
+    width: 100%;
+}
+
+#tablaBilletera{
+    margin: 20px;
+    width: 80%;
+}
+
+.Columna1{
+    grid-area: columna1;
+    width: 97%;
+}
+
+.Columna2{
+    grid-area: columna2;
+    width: 97%;
+}
+
+.Columna3{
+    grid-area: columna3;
+    width: 97%;
+}
+
+#columna1{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+#columna2{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 25%;
+}
+
+#columna3{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 25%;
+}
