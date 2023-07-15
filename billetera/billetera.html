@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tu Billetera de Criptomonedas</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">CoinWallet</a>
@@ -19,32 +24,44 @@
               <a class="nav-link" href="../index.html">Precios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./billetera.html">Portfolio</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./billetera.html"
+                >Portfolio</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-      <div id="cabeceraBilletera">
-        <div class="Columna1">
-          <p class="h1">Mis tenencias</p>
-        </div>
-        <div class="Columna2">
-          <p class="h1" id="montoTotal"></p>
-        </div>
-        <div class="Columna3">
-          <br>
-          <button class="btn btn-primary" type="button" id="resetButton">Reset</button>
-        </div>
+    <div id="cabeceraBilletera">
+      <div class="Columna1">
+        <p class="h1">Mis tenencias</p>
       </div>
+      <div class="Columna2">
+        <p class="h1" id="montoTotal"></p>
+      </div>
+      <div class="Columna3">
+        <br />
+        <button class="btn btn-primary" type="button" id="resetButton">
+          Reset
+        </button>
+      </div>
+    </div>
 
-      <table class="table table-success table-striped" id="tablaBilletera">
+    <table
+      class="table table-success table-striped"
+      id="tablaBilletera"
+    ></table>
 
-    </table>
-    
     <script src="../script/jquery-3.6.0.min.js"></script>
-    <script src="./billetera.js"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-</body>
+    <script src="./billetera.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
